@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">New York Times Top Stories</string>
+
+    <string name="action_retry">Retry</string>
+    <string name="action_popular">Arts</string>
+    <string name="action_sort_by">Sort by</string>
+
+    <string name="action_delete">Delete</string>
+    <string name="action_favorite">Add to favorites</string>
+    <string name="action_remove_from_favorites">Delete from favorites</string>
+
+    <string name="item_added_successfully">Added to your favorites successfully</string>
+    <string name="item_removed_successfully">Removed from your favorites successfully</string>
+
+    <string name="favorites">Favorites</string>
+
+    <string name="bottom_navigation_border">Bottom navigation border</string>
+    <string name="no_favorites">Empty. You haven\'t added anything to your favorites yet!</string>
+    <string name="review_author_image">Review author image</string>
+
+    <string name="sample_sentence">The quick brown fox jumps over the lazy dog. It is happier than ever. The quick brown fox jumps over the lazy dog. It is happier than ever.</string>
+    <string name="read_online">Read Online</string>
+    <string name="top_story_details">Top Story Details</string>
+    <string name="top_stories">Top Stories</string>
+    <string name="unknown_error">Unknown Error</string>
+
+    <string name="section">Section</string>
+    <array name="section_array">
+        <item>Arts</item>
+        <item>Automobiles</item>
+        <item>Books</item>
+        <item>Business</item>
+        <item>Fashion</item>
+        <item>Food</item>
+        <item>Health</item>
+        <item>Home</item>
+        <item>Insider</item>
+        <item>Magazine</item>
+        <item>Movies</item>
+        <item>NYRegion</item>
+        <item>Obituaries</item>
+        <item>Opinion</item>
+        <item>Politics</item>
+        <item>Science</item>
+        <item>Sports</item>
+        <item>Technology</item>
+        <item>Theater</item>
+        <item>Travel</item>
+        <item>Upshot</item>
+        <item>Us</item>
+        <item>World</item>
+    </array>
+</resources>
