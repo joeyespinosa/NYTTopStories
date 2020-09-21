@@ -2,7 +2,7 @@
 Project for the Udacity Nanodegree Android Developer.
 Utilized the [New York Times Developer Top Stories API](https://developer.nytimes.com/apis).
 
-!(https://github.com/joeyespinosa/NYTTopStories/tree/master/images/image_01) !(https://github.com/joeyespinosa/NYTTopStories/tree/master/images/image_02)
+!(https://github.com/joeyespinosa/NYTTopStories/tree/master/images/image_01.jpg) !(https://github.com/joeyespinosa/NYTTopStories/tree/master/images/image_02.jpg)
 
 ## Features
 *   Discover top stories and save desired items to device
