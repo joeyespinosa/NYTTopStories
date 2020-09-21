@@ -11,6 +11,7 @@ import com.axelia.nyttopstories.data.remote.api.ApiService;
 import com.axelia.nyttopstories.data.model.Resource;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -56,7 +57,9 @@ public class ItemPageKeyedDataSource extends PageKeyedDataSource<Integer, Story>
         try {
             Response<TopStoryResponse> response = request.execute();
             TopStoryResponse data = response.body();
-            List<Story> itemList = data != null ? data.getStories() : Collections.<Story>emptyList();
+            List<Story> itemList = new ArrayList<>();
+            itemList.clear();
+            itemList = data != null ? data.getStories() : Collections.<Story>emptyList();
 
             retryCallback = null;
             networkState.postValue(Resource.success(null));
@@ -97,7 +100,9 @@ public class ItemPageKeyedDataSource extends PageKeyedDataSource<Integer, Story>
             public void onResponse(Call<TopStoryResponse> call, Response<TopStoryResponse> response) {
                 if (response.isSuccessful()) {
                     TopStoryResponse data = response.body();
-                    List<Story> itemList = data != null ? data.getStories() : Collections.<Story>emptyList();
+                    List<Story> itemList = new ArrayList<>();
+                    itemList.clear();
+                    itemList = data != null ? data.getStories() : Collections.<Story>emptyList();
                     retryCallback = null;
                     callback.onResult(itemList, params.key + 1);
                     networkState.postValue(Resource.success(null));

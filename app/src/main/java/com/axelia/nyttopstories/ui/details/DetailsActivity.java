@@ -1,11 +1,16 @@
 package com.axelia.nyttopstories.ui.details;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RemoteViews;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -17,6 +22,8 @@ import com.axelia.nyttopstories.R;
 import com.axelia.nyttopstories.StoryApplication;
 import com.axelia.nyttopstories.data.model.Story;
 import com.axelia.nyttopstories.databinding.ActivityDetailsBinding;
+import com.axelia.nyttopstories.ui.widget.StoryWidgetProvider;
+import com.axelia.nyttopstories.utils.Constants;
 import com.axelia.nyttopstories.utils.ItemDetailsViewModelFactory;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.snackbar.Snackbar;
@@ -103,6 +110,8 @@ public class DetailsActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case MENU_SAVE: {
                 mViewModel.saveStory(story);
+                saveRecipeDataToSharedPreferences(story);
+                refreshWidget(story);
                 invalidateOptionsMenu();
                 return true;
             }
@@ -115,6 +124,24 @@ public class DetailsActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void refreshWidget(Story story) {
+        // Update the Widget display
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplication());
+        int ids[] = appWidgetManager.getAppWidgetIds(
+                new ComponentName(getApplication(), StoryWidgetProvider.class));
+
+        RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.widget_recently_saved);
+        remoteViews.setTextViewText(R.id.textview_widget_story_title, story.getTitle());
+        appWidgetManager.partiallyUpdateAppWidget(ids, remoteViews);
+    }
+
+    private void saveRecipeDataToSharedPreferences(Story story) {
+        SharedPreferences sharedpreferences = getSharedPreferences(Constants.MY_PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString(getString(R.string.story_title), story.getTitle());
+        editor.apply();
     }
 
     private void setupToolbar() {

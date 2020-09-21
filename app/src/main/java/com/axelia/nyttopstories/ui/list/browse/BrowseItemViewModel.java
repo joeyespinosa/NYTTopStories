@@ -25,20 +25,11 @@ public class BrowseItemViewModel extends ViewModel {
     private StoryRepository repository;
 
     public BrowseItemViewModel(final StoryRepository repository) {
+
         this.repository = repository;
-    }
 
-    public MutableLiveData<String> getCurrentTitle() {
-        return currentTitle;
-    }
-
-    public void setCurrentTitle(MutableLiveData<String> currentTitle) {
-        this.currentTitle = currentTitle;
-    }
-
-    public void getStories(final String section) {
-        sortBy.setValue(section);
-        currentTitle.setValue(section);
+        sortBy.setValue("Arts");
+        currentTitle.setValue("Arts");
 
         repoStoriesResult = Transformations.map(sortBy, new Function<String, RepoStoriesResult>() {
             @Override
@@ -46,6 +37,7 @@ public class BrowseItemViewModel extends ViewModel {
                 return repository.loadStories(type);
             }
         });
+
         pagedList = Transformations.switchMap(repoStoriesResult,
                 new Function<RepoStoriesResult, LiveData<PagedList<Story>>>() {
                     @Override
@@ -60,6 +52,20 @@ public class BrowseItemViewModel extends ViewModel {
                 return input.resource;
             }
         });
+    }
+
+    public MutableLiveData<String> getCurrentTitle() {
+        return currentTitle;
+    }
+
+    public void setCurrentTitle(MutableLiveData<String> currentTitle) {
+        this.currentTitle = currentTitle;
+    }
+
+    public void getStories(final String section) {
+        sortBy.setValue(section);
+        currentTitle.setValue(section);
+
     }
 
     public LiveData<PagedList<Story>> getPagedList() {

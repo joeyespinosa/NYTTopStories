@@ -24,7 +24,14 @@ import com.axelia.nyttopstories.R;
 import com.axelia.nyttopstories.data.model.Resource;
 import com.axelia.nyttopstories.data.model.Story;
 import com.axelia.nyttopstories.utils.BrowseItemsViewModelFactory;
+import com.axelia.nyttopstories.utils.Constants;
 import com.axelia.nyttopstories.utils.ItemOffsetDecoration;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.Objects;
 
@@ -34,6 +41,8 @@ public class BrowseItemsFragment extends Fragment {
 
     private BrowseItemViewModel viewModel;
     private TextView sectionTextView;
+    private FirebaseAnalytics mFirebaseAnalytics;
+    private AdView mAdView;
 
     @Inject
     BrowseItemsViewModelFactory factory;
@@ -46,6 +55,12 @@ public class BrowseItemsFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         StoryApplication.getComponent(Objects.requireNonNull(getActivity())).inject(this);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getActivity());
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, Constants.FIREBASE_ID_BROWSE_ITEMS);
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME,  Constants.FIREBASE_NAME_BROWSE_ITEMS);
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
     }
 
     @Nullable
@@ -73,6 +88,20 @@ public class BrowseItemsFragment extends Fragment {
         });
 
         setupListAdapter();
+        setupAds();
+    }
+
+    private void setupAds() {
+        MobileAds.initialize(getActivity(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
+            }
+        });
+
+        mAdView = getActivity().findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     //region Options Menu
@@ -93,6 +122,7 @@ public class BrowseItemsFragment extends Fragment {
                     .itemsCallback(new MaterialDialog.ListCallback() {
                         @Override
                         public void onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+
                             viewModel.getStories(text.toString());
                         }
                     });
@@ -118,7 +148,10 @@ public class BrowseItemsFragment extends Fragment {
         viewModel.getPagedList().observe(getViewLifecycleOwner(), new Observer<PagedList<Story>>() {
             @Override
             public void onChanged(PagedList<Story> items) {
+                browseItemsAdapter.submitList(null);
+                browseItemsAdapter.notifyDataSetChanged();
                 browseItemsAdapter.submitList(items);
+                browseItemsAdapter.notifyDataSetChanged();
             }
         });
 

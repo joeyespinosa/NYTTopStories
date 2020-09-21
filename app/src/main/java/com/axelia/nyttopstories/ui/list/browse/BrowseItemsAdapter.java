@@ -1,5 +1,6 @@
 package com.axelia.nyttopstories.ui.list.browse;
 
+import android.annotation.SuppressLint;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -89,9 +90,10 @@ public class BrowseItemsAdapter extends PagedListAdapter<Story, RecyclerView.Vie
     private static DiffUtil.ItemCallback<Story> ITEM_COMPARATOR = new DiffUtil.ItemCallback<Story>() {
         @Override
         public boolean areItemsTheSame(@NonNull Story oldItem, @NonNull Story newItem) {
-            return oldItem.getId() == newItem.getId();
+            return oldItem.getTitle() == newItem.getTitle();
         }
 
+        @SuppressLint("DiffUtilEquals")
         @Override
         public boolean areContentsTheSame(@NonNull Story oldItem, @NonNull Story newItem) {
             return oldItem.equals(newItem);

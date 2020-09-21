@@ -9,4 +9,11 @@ public class Constants {
     public static final String IMAGE_URL = IMAGE_BASE_URL + IMAGE_SIZE_W200;
     public static final String BACKDROP_URL = IMAGE_BASE_URL + BACKDROP_SIZE;
 
+    public static final String FIREBASE_ID_BROWSE_ITEMS = "BROWSE_ITEMS";
+    public static final String FIREBASE_ID_FAVORITE = "FAVORITE";
+
+    public static final String FIREBASE_NAME_BROWSE_ITEMS = "BROWSE_ITEMS";
+    public static final String FIREBASE_NAME_FAVORITE = "FAVORITE";
+    public static final String MY_PREFS_NAME = "MyPrefsFile";
+
 }

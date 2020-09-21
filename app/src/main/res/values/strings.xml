@@ -12,8 +12,6 @@
     <string name="item_added_successfully">Added to your favorites successfully</string>
     <string name="item_removed_successfully">Removed from your favorites successfully</string>
 
-    <string name="favorites">Favorites</string>
-
     <string name="bottom_navigation_border">Bottom navigation border</string>
     <string name="no_favorites">Empty. You haven\'t added anything to your favorites yet!</string>
     <string name="review_author_image">Review author image</string>
@@ -25,6 +23,10 @@
     <string name="unknown_error">Unknown Error</string>
 
     <string name="section">Section</string>
+    <string name="browse">Browse</string>
+    <string name="favorites">Favorites</string>
+    <string name="widget_empty">Empty</string>
+    <string name="story_title">Story Title</string>
     <array name="section_array">
         <item>Arts</item>
         <item>Automobiles</item>

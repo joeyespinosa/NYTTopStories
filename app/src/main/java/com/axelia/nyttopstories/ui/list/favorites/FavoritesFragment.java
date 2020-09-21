@@ -19,8 +19,10 @@ import com.axelia.nyttopstories.R;
 import com.axelia.nyttopstories.data.model.Story;
 import com.axelia.nyttopstories.databinding.FragmentFavoriteStoryBinding;
 import com.axelia.nyttopstories.ui.list.browse.MainActivity;
+import com.axelia.nyttopstories.utils.Constants;
 import com.axelia.nyttopstories.utils.FavoritesViewModelFactory;
 import com.axelia.nyttopstories.utils.ItemOffsetDecoration;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.List;
 import java.util.Objects;
@@ -31,6 +33,7 @@ public class FavoritesFragment extends Fragment {
 
     private FavoritesViewModel viewModel;
     private FragmentFavoriteStoryBinding binding;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Inject
     FavoritesViewModelFactory factory;
@@ -43,6 +46,13 @@ public class FavoritesFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         StoryApplication.getComponent(Objects.requireNonNull(getActivity())).inject(this);
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getActivity());
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, Constants.FIREBASE_ID_BROWSE_ITEMS);
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME,  Constants.FIREBASE_NAME_BROWSE_ITEMS);
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
     }
 
     @Nullable

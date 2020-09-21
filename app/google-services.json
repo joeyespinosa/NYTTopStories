@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "891746683624",
+    "firebase_url": "https://nyttopstories-6470f.firebaseio.com",
+    "project_id": "nyttopstories-6470f",
+    "storage_bucket": "nyttopstories-6470f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:891746683624:android:bbceb33a60530c7539575d",
+        "android_client_info": {
+          "package_name": "com.axelia.nyttopstories"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "891746683624-emsgpauvc6qdohqi3frqtt9gsjlr4jbq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.axelia.nyttopstories",
+            "certificate_hash": "264ccbfec541e03ff06f531f36725ecebc282b36"
+          }
+        },
+        {
+          "client_id": "891746683624-q2pkifkqg9hr8c7c7kjq11ov3satc58m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkjKMEj8q5Feq_yhQU55aR_xIdtVCv9dw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "891746683624-q2pkifkqg9hr8c7c7kjq11ov3satc58m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

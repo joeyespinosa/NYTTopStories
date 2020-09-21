@@ -9,6 +9,11 @@ import android.view.MenuItem;
 import com.axelia.nyttopstories.R;
 import com.axelia.nyttopstories.ui.list.favorites.FavoritesFragment;
 import com.axelia.nyttopstories.utils.ActivityUtils;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

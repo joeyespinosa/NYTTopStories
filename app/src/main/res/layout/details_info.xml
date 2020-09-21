@@ -3,13 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="story"
-            type="com.axelia.nyttopstories.data.model.Story" />
-    </data>
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,41 +14,6 @@
             android:layout_height="match_parent"
             android:background="@android:color/white"
             android:padding="@dimen/dimen_16">
-
-            <TextView
-                android:id="@+id/textview_title"
-                style="@style/TitleDetailText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/dimen_8"
-                android:text="@{story.title}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="@tools:sample/lorem" />
-
-            <TextView
-                android:id="@+id/textview_byline"
-                style="@style/TitleDetailText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="left|center"
-                android:text="@{story.byline}"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textview_title"
-                tools:text="@tools:sample/full_names" />
-
-            <TextView
-                android:id="@+id/textview_body"
-                style="@style/BodyText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@{story.abstract}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textview_byline"
-                tools:text="@tools:sample/full_names" />
 
             <Button
                 android:id="@+id/button_read_online"
@@ -69,7 +27,51 @@
                 app:layout_constraintTop_toBottomOf="@+id/textview_body"
                 tools:text="Read Online" />
 
+            <TextView
+                android:id="@+id/textview_byline"
+                style="@style/TitleDetailText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@{story.byline}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textview_title"
+                tools:text="@tools:sample/full_names" />
+
+            <TextView
+                android:id="@+id/textview_body"
+                style="@style/BodyText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@{story.abstract}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textview_byline"
+                tools:text="@tools:sample/full_names" />
+
+            <TextView
+                android:id="@+id/textview_title"
+                style="@style/TitleDetailText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_8"
+                android:gravity="start"
+                android:text="@{story.title}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@tools:sample/lorem" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <data>
+
+        <variable
+            name="story"
+            type="com.axelia.nyttopstories.data.model.Story" />
+    </data>
 </layout>
